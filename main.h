@@ -61,7 +61,7 @@ typedef struct liststr
  *@argc: the argument count
  *@line_count: the error count
  *@err_num: the error code for exit()s
- *@linecount_flag: if on count this line of input
+ *@line_count_flag: if on count this line of input
  *@fname: the program filename
  *@env: linked list local copy of environ
  *@environ: custom modified copy of environ from LL env
@@ -72,7 +72,7 @@ typedef struct liststr
  *@cmd_buf: address of pointer to cmd_buf, on if chaining
  *@cmd_buf_type: CMD_type ||, &&, ;
  *@readfd: the fd from which to read line input
- *@histcount: the history line number count
+ *@hist_count: the history line number count
  */
 
 typedef struct passinfo
@@ -83,7 +83,7 @@ typedef struct passinfo
 	int argc;
 	unsigned int line_count;
 	int err_num;
-	int linecount_flag;
+	int line_count_flag;
 	char *fname;
 	list_t *env;
 	list_t *history;
@@ -95,7 +95,7 @@ typedef struct passinfo
 	char **cmd_buf;
 	int cmd_buf_type;
 	int readfd;
-	int histcount;
+	int hist_count;
 } info_t;
 
 /**
@@ -169,7 +169,7 @@ int setEnv(info_t *, char *, char *);
 char *getHistoryFile(info_t *info);
 int writeHistory(info_t *info);
 int readHistory(info_t *info);
-int buildHistoryList(info_t *info, char *buf, int linecount);
+int buildHistoryList(info_t *info, char *buf, int line_count);
 int renumberHistory(info_t *info);
 list_t *addNode(list_t **, const char *, int);
 list_t *endNode(list_t **, const char *, int);

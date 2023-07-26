@@ -43,9 +43,9 @@ int readHistory(info_t *info)
 	if (last != i)
 		buildHistoryList(info, buf + last, line_count++);
 	free(buf);
-	info->histcount = line_count;
-	while (info->histcount-- >= HIST_MAX)
+	info->hist_count = line_count;
+	while (info->hist_count-- >= HIST_MAX)
 		deleteNode(&(info->history), 0);
 	renumberHistory(info);
-	return (info->histcount);
+	return (info->hist_count);
 }
