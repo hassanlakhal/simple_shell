@@ -20,40 +20,6 @@ char **getEnviron(info_t *info)
 }
 
 /**
- * unsetEnv - Removes an environment variable.
- *
- * @info: Pointer to the parameter structure.
- * @var: Pointer to the variable to be removed.
- *
- * Return: Depends on the condition.
- */
-
-int unsetEnv(info_t *info, char *var)
-{
-	list_t *node = info->env;
-	size_t i = 0;
-	char *p;
-
-	if (!node || !var)
-		return (0);
-
-	while (node)
-	{
-		p = startsWith(node->str, var);
-		if (p && *p == '=')
-		{
-			info->env_changed = deleteNode(&(info->env), i);
-			i = 0;
-			node = info->env;
-			continue;
-		}
-		node = node->next;
-		i++;
-	}
-	return (info->env_changed);
-}
-
-/**
  * setEnv - Sets an environment variable.
  *
  * @info: Pointer to the parameter structure.
@@ -82,7 +48,7 @@ int setEnv(info_t *info, char *var, char *value)
 	while (node)
 	{
 		p = startsWith(node->str, var);
-		if (p && *p == '=')
+		if (p && p[0] == '=')
 		{
 			free(node->str);
 			node->str = buf;

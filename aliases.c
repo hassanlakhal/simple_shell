@@ -75,42 +75,6 @@ int printAlias(list_t *node)
 }
 
 /**
- * myAlias - Simulates the "alias" built-in command (man alias).
- *
- * @info: Structure containing potential arguments.
- *
- * Return: Always returns 0.
- */
-
-int myAlias(info_t *info)
-{
-	int i = 0;
-	char *p = NULL;
-	list_t *node = NULL;
-
-	if (info->argc == 1)
-	{
-		node = info->alias;
-		while (node)
-		{
-			printAlias(node);
-			node = node->next;
-		}
-		return (0);
-	}
-	for (i = 1; info->argv[i]; i++)
-	{
-		p = _strchr(info->argv[i], '=');
-		if (p)
-			setAlias(info, info->argv[i]);
-		else
-			printAlias(nodeStartsWith(info->alias, info->argv[i], '='));
-	}
-
-	return (0);
-}
-
-/**
  * replaceAlias - Replaces aliases in the tokenized string.
  *
  * @info: The parameter structure.
@@ -120,11 +84,11 @@ int myAlias(info_t *info)
 
 int replaceAlias(info_t *info)
 {
-	int i;
+	int i = 0;
 	list_t *node;
 	char *p;
 
-	for (i = 0; i < 10; i++)
+	while (i < 10)
 	{
 		node = nodeStartsWith(info->alias, info->argv[0], '=');
 		if (!node)
@@ -137,6 +101,7 @@ int replaceAlias(info_t *info)
 		if (!p)
 			return (0);
 		info->argv[0] = p;
+		i++;
 	}
 	return (1);
 }

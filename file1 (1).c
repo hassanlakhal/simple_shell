@@ -115,22 +115,3 @@ int myExit(info_t *info)
 	return (-2);
 }
 
-/**
- * myHelp - Displays help information.
- *
- * @info: Structure containing potential arguments.
- * Used to maintain a constant function prototype.
- *
- * Return: Always returns 0.
- */
-
-int myHelp(info_t *info)
-{
-	char **arg_array;
-
-	arg_array = info->argv;
-	_puts("help call works. Function not yet implemented \n");
-	if (0)
-		_puts(*arg_array);
-	return (0);
-}

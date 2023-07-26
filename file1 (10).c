@@ -13,7 +13,8 @@ int replaceVariables(info_t *info)
 	int i = 0;
 	list_t *node;
 
-	for (i = 0; info->argv[i]; i++)
+	i = 0;
+	while (info->argv[i])
 	{
 		if (info->argv[i][0] != '$' || !info->argv[i][1])
 			continue;
@@ -38,7 +39,7 @@ int replaceVariables(info_t *info)
 			continue;
 		}
 		replaceString(&info->argv[i], _strDuplicate(""));
-
+		i++;
 	}
 	return (0);
 }

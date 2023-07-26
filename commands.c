@@ -1,55 +1,6 @@
 #include "main.h"
 
 /**
- * changeDirectory - Changes the current working directory.
- *
- * @info: Pointer to the parameter structure.
- *
- * Return: Depends on the condition.
- */
-
-int changeDirectory(info_t *info)
-{
-	char *s, *dir, buffer[1024];
-	int chdir_ret;
-
-	s = getcwd(buffer, 1024);
-	if (!s)
-		_puts("TODO: >>getcwd failure emsg here<<\n");
-	if (!info->argv[1])
-	{
-		dir = getEnvVariable(info, "HOME=");
-		if (!dir)
-			chdir_ret = chdir((dir = getEnvVariable(info, "PWD=")) ? dir : "/");
-		else
-			chdir_ret = chdir(dir);
-	}
-	else if (_strcmp(info->argv[1], "-") == 0)
-	{
-		if (!getEnvVariable(info, "OLDPWD="))
-		{
-			_puts(s);
-			_putchar('\n');
-			return (1);
-		}
-		_puts(getEnvVariable(info, "OLDPWD=")), _putchar('\n');
-		chdir_ret = chdir((dir = getEnvVariable(info, "OLDPWD=")) ? dir : "/");
-	}
-	else
-		chdir_ret = chdir(info->argv[1]);
-	if (chdir_ret == -1)
-	{
-		printError(info, "can't cd to ");
-		printString(info->argv[1]), printChar('\n');
-	}
-	else
-	{
-		setEnv(info, "OLDPWD", getEnvVariable(info, "PWD="));
-		setEnv(info, "PWD", getcwd(buffer, 1024));
-	} return (0);
-}
-
-/**
  * isCommand - Checks if a path is a command.
  *
  * @info: Pointer to the parameter structure.
@@ -87,12 +38,6 @@ int findBuiltin(info_t *info)
 	builtin_table builtintbl[] = {
 		{"exit", myExit},
 		{"env", myEnv},
-		{"help", myHelp},
-		{"history", myHistory},
-		{"setenv", mySetEnv},
-		{"unsetenv", myUnsetEnv},
-		{"cd", changeDirectory},
-		{"alias", myAlias},
 		{NULL, NULL}
 	};
 

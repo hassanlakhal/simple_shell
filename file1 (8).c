@@ -20,7 +20,8 @@ char **listToStrings(list_t *head)
 	strs = malloc(sizeof(char *) * (i + 1));
 	if (!strs)
 		return (NULL);
-	for (i = 0; node; node = node->next, i++)
+	i = 0;
+	while (node)
 	{
 		str = malloc(_strlen(node->str) + 1);
 		if (!str)
@@ -33,6 +34,8 @@ char **listToStrings(list_t *head)
 
 		str = _strcpy(str, node->str);
 		strs[i] = str;
+		node = node->next
+		i++
 	}
 	strs[i] = NULL;
 	return (strs);
