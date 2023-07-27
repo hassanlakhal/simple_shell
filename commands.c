@@ -74,7 +74,7 @@ void findCommand(info_t *info)
 	if (!k)
 		return;
 
-	path = findPath(info, getEnvVariable(info, "PATH="), info->argv[0]);
+	path = findPath(info, get_env(info, "PATH="), info->argv[0]);
 	if (path)
 	{
 		info->path = path;
@@ -82,13 +82,13 @@ void findCommand(info_t *info)
 	}
 	else
 	{
-		if ((isInteractiveMode(info) || getEnvVariable(info, "PATH=")
+		if ((isInteractiveMode(info) || get_env(info, "PATH=")
 			|| info->argv[0][0] == '/') && isCommand(info, info->argv[0]))
 			runCommand(info);
 		else if (*(info->arg) != '\n')
 		{
 			info->status = 127;
-			printError(info, "not found\n");
+			displayError(info, "not found\n");
 		}
 	}
 }
@@ -126,7 +126,7 @@ void runCommand(info_t *info)
 		{
 			info->status = WEXITSTATUS(info->status);
 			if (info->status == 126)
-				printError(info, "Permission denied\n");
+				displayError(info, "Permission denied\n");
 		}
 	}
 }

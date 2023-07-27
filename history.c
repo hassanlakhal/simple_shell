@@ -13,7 +13,7 @@ int readHistory(info_t *info)
 	int i, last = 0, line_count = 0;
 	ssize_t fd, rdlen, fsize = 0;
 	struct stat st;
-	char *buf = NULL, *filename = getHistoryFile(info);
+	char *buf = NULL, *filename = get_histo(info);
 
 	if (!filename)
 		return (0);
@@ -37,11 +37,11 @@ int readHistory(info_t *info)
 		if (buf[i] == '\n')
 		{
 			buf[i] = 0;
-			buildHistoryList(info, buf + last, line_count++);
+			fill_histo(info, buf + last, line_count++);
 			last = i + 1;
 		}
 	if (last != i)
-		buildHistoryList(info, buf + last, line_count++);
+		fill_histo(info, buf + last, line_count++);
 	free(buf);
 	info->hist_count = line_count;
 	while (info->hist_count-- >= HIST_MAX)

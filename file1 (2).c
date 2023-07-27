@@ -15,7 +15,7 @@ int myEnv(info_t *info)
 }
 
 /**
- * getEnvVariable - Gets the value of an environment variable.
+ * get_env - Gets the value of an environment variable.
  *
  * @info: Structure containing potential arguments.
  * @name: Environment variable name.
@@ -23,7 +23,7 @@ int myEnv(info_t *info)
  * Return: The value of the environment variable.
  */
 
-char *getEnvVariable(info_t *info, const char *name)
+char *get_env(info_t *info, const char *name)
 {
 	list_t *node = info->env;
 	char *p;

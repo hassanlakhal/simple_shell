@@ -1,13 +1,13 @@
 #include "main.h"
 
 /**
- * printError - Prints an error message.
+ * displayError - Prints an error message.
  *
  * @info: Pointer to the parameter & return info struct.
  * @estr: String containing the specified error type.
  */
 
-void printError(info_t *info, char *estr)
+void displayError(info_t *info, char *estr)
 {
 	printString(info->fname);
 	printString(": ");

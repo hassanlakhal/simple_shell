@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * _splitString - Splits a string into words.
+ * _split_str - Splits a string into words.
  *
  * @str: The input string.
  * @d: The delimiter.
@@ -9,7 +9,7 @@
  * Return: A pointer to an array of strings, or NULL on failure.
  */
 
-char **_splitString(char *str, char d)
+char **_split_str(char *str, char d)
 {
 	int i, j, k, m, numwords = 0;
 	char **s;

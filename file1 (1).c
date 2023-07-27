@@ -1,7 +1,7 @@
 #include"main.h"
 
 /**
- * splitString - Splits a string into words
+ * split_str - Splits a string into words
  * ignoring repeated delimiters.
  *
  * @str: The input string.
@@ -11,7 +11,7 @@
  * or NULL on failure.
  */
 
-char **splitString(char *str, char *d)
+char **split_str(char *str, char *d)
 {
 	int i, j, k, m, numwords = 0;
 	char **s;
@@ -103,7 +103,7 @@ int myExit(info_t *info)
 		if (exitcheck == -1)
 		{
 			info->status = 2;
-			printError(info, "Illegal number: ");
+			displayError(info, "Illegal number: ");
 			printString(info->argv[1]);
 			printChar('\n');
 			return (1);

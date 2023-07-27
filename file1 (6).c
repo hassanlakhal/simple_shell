@@ -14,7 +14,7 @@ void setInfo(info_t *info, char **av)
 	info->fname = av[0];
 	if (info->arg)
 	{
-		info->argv = splitString(info->arg, " \t");
+		info->argv = split_str(info->arg, " \t");
 		if (!info->argv)
 		{
 
@@ -34,18 +34,18 @@ void setInfo(info_t *info, char **av)
 }
 
 /**
- * getHistoryFile - Retrieves the history file.
+ * get_histo - Retrieves the history file.
  *
  * @info: Parameter struct.
  *
  * Return: Allocated string containing the history file.
  */
 
-char *getHistoryFile(info_t *info)
+char *get_histo(info_t *info)
 {
 	char *buf, *dir;
 
-	dir = getEnvVariable(info, "HOME=");
+	dir = get_env(info, "HOME=");
 	if (!dir)
 		return (NULL);
 	buf = malloc(sizeof(char) * (_strlen(dir) + _strlen(HIST_FILE) + 2));
@@ -69,7 +69,7 @@ char *getHistoryFile(info_t *info)
 int writeHistory(info_t *info)
 {
 	ssize_t fd;
-	char *filename = getHistoryFile(info);
+	char *filename = get_histo(info);
 	list_t *node = NULL;
 
 	if (!filename)
@@ -90,7 +90,7 @@ int writeHistory(info_t *info)
 }
 
 /**
- * buildHistoryList - Adds an entry to the history linked list.
+ * fill_histo - Adds an entry to the history linked list.
  *
  * @info: Structure containing potential arguments.
  * @buf: Buffer.
@@ -99,7 +99,7 @@ int writeHistory(info_t *info)
  * Return: Always 0.
  */
 
-int buildHistoryList(info_t *info, char *buf, int linecount)
+int fill_histo(info_t *info, char *buf, int linecount)
 {
 	list_t *node = NULL;
 
