@@ -182,7 +182,6 @@ ssize_t getNodeIndex(list_t *, list_t *);
 int isChain(info_t *, char *, size_t *);
 void checkChain(info_t *, char *, size_t *, size_t, size_t);
 int replaceAlias(info_t *);
-int replaceVariables(info_t *);
 int replaceString(char **, char *);
 char **_splitString(char *str, char d);
 
