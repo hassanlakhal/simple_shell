@@ -18,7 +18,7 @@ int shellLoop(info_t *info, char **av)
 	{
 		clearInfo(info);
 		if (isInteractiveMode(info))
-			_puts("$ ");
+			_puts("sh ->");
 		printChar(BUF_FLUSH);
 		r = getInput(info);
 		if (r != -1)

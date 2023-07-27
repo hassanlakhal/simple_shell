@@ -30,7 +30,7 @@ void setInfo(info_t *info, char **av)
 		info->argc = i;
 
 		replaceAlias(info);
-		replaceVariables(info);
+		//replaceVariables(info);
 	}
 }
 
