@@ -7,8 +7,7 @@
  * @str: String representing the alias to be removed.
  *
  * Return: 0 if the alias was successfully unset, 1 if there was an error.
-*/
-
+ */
 int unsetAlias(info_t *info, char *str)
 {
 	char *p, c;
@@ -32,9 +31,7 @@ int unsetAlias(info_t *info, char *str)
  * @str: String representing the alias to be set.
  *
  * Return: 0 if the alias was successfully set, 1 if there was an error.
-*/
-
-
+ */
 int setAlias(info_t *info, char *str)
 {
 	char *p;
@@ -56,7 +53,6 @@ int setAlias(info_t *info, char *str)
  *
  * Return: 0 if the alias was successfully printed, 1 if there was an error.
  */
-
 int printAlias(list_t *node)
 {
 	char *p = NULL, *a = NULL;
@@ -81,7 +77,6 @@ int printAlias(list_t *node)
  *
  * Return: 1 if any aliases were replaced, 0 otherwise.
  */
-
 int replaceAlias(info_t *info)
 {
 	int i = 0;
@@ -105,3 +100,4 @@ int replaceAlias(info_t *info)
 	}
 	return (1);
 }
+
