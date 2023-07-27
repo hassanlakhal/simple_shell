@@ -111,14 +111,13 @@ typedef struct builtin
 	int (*func)(info_t *);
 } builtin_table;
 
-int shellLoop(info_t *, char **);
+int exection(info_t *, char **);
 int findBuiltin(info_t *);
 void findCommand(info_t *);
 void runCommand(info_t *info);
 int isCommand(info_t *, char *);
 char *duplicateChars(char *, int, int);
 char *findPath(info_t *, char *, char *);
-int loophsh(char **);
 void printString(char *);
 int printChar(char);
 int printCharToFD(char c, int fd);
@@ -160,7 +159,7 @@ void freeInfo(info_t *, int);
 char *getEnvVariable(info_t *, const char *);
 int myEnv(info_t *);
 int mySetEnv(info_t *);
-int envList(info_t *);
+int fill_list(info_t *);
 char **getEnviron(info_t *);
 int setEnv(info_t *, char *, char *);
 char *getHistoryFile(info_t *info);
@@ -182,6 +181,5 @@ ssize_t getNodeIndex(list_t *, list_t *);
 int isChain(info_t *, char *, size_t *);
 void checkChain(info_t *, char *, size_t *, size_t, size_t);
 int replaceAlias(info_t *);
-int replaceString(char **, char *);
 char **_splitString(char *str, char d);
 

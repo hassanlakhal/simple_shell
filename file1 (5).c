@@ -70,31 +70,31 @@ ssize_t readBuf(info_t *info, char *buf, size_t *i)
  *
  * @info: Pointer to the parameter struct.
  * @ptr: Address of the pointer to the buffer, preallocated or NULL.
- * @length: Size of preallocated ptr buffer if not NULL.
+ * @len: Size of preallocated ptr buffer if not NULL.
  *
  * Return: The number of bytes read.
  */
 
-int getLine(info_t *info, char **ptr, size_t *length)
+int getLine(info_t *info, char **ptr, size_t *len)
 {
 	static char buf[readBuf_SIZE];
-	static size_t i, len;
+	static size_t i, len1;
 	size_t k;
 	ssize_t r = 0, s = 0;
 	char *p = NULL, *new_p = NULL, *c;
 
 	p = *ptr;
-	if (p && length)
-		s = *length;
-	if (i == len)
-		i = len = 0;
+	if (p && len)
+		s = *len;
+	if (i == len1)
+		i = len1 = 0;
 
-	r = readBuf(info, buf, &len);
-	if (r == -1 || (r == 0 && len == 0))
+	r = readBuf(info, buf, &len1);
+	if (r == -1 || (r == 0 && *len == 0))
 		return (-1);
 
 	c = _strchr(buf + i, '\n');
-	k = c ? 1 + (unsigned int)(c - buf) : len;
+	k = c ? 1 + (unsigned int)(c - buf) : len1;
 	new_p = reallocateMemory(p, s, s ? s + k : k + 1);
 	if (!new_p)
 		return (p ? free(p), -1 : -1);
@@ -108,8 +108,8 @@ int getLine(info_t *info, char **ptr, size_t *length)
 	i = k;
 	p = new_p;
 
-	if (length)
-		*length = s;
+	if (len)
+		*len = s;
 	*ptr = p;
 	return (s);
 }

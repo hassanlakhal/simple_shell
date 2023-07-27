@@ -45,11 +45,11 @@ char *_strcpy(char *dest, char *src)
 }
 
 /**
- * _strlen - Computes the length of a string.
+ * _strlen - Computes the len of a string.
  *
  * @s: Input string.
  *
- * Return: The length of the string.
+ * Return: The len of the string.
  */
 
 int _strlen(char *s)

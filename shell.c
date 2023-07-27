@@ -25,19 +25,14 @@ int main(int ac, char **av)
 				exit(126);
 			if (errno == ENOENT)
 			{
-				printString(av[0]);
-				printString(": 0: Can't open ");
-				printString(av[1]);
-				printChar('\n');
-				printChar(BUF_FLUSH);
+				write(2,"Error\n",6);
 				exit(127);
 			} return (1);
 		}
 		inf->readfd = fd;
 	}
-	envList(inf);
+	fill_list(inf);
 	readHistory(inf);
-	shellLoop(inf, av);
-	exit(0);
+	exection(inf, av);
 	return (0);
 }

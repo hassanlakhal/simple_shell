@@ -65,36 +65,21 @@ int setEnv(info_t *info, char *var, char *value)
 
 
 /**
- * envList - Creates a linked list of the environment.
+ * fill_list - Creates a linked list of the environment.
  *
  * @info: Pointer to the parameter structure.
  *
  * Return: Depends on the condition.
  */
 
-int envList(info_t *info)
+int fill_list(info_t *info)
 {
 	list_t *node = NULL;
 	size_t i;
 
-	for (i = 0; environ[i]; i++)
-		endNode(&node, environ[i], 0);
+	i = 0;
+	while (environ[i])
+		endNode(&node, environ[i++], 0);
 	info->env = node;
 	return (0);
-}
-
-/**
- * replaceString - Replaces a string with another.
- *
- * @old: Pointer to the string to be replaced.
- * @new: Pointer to the replacement string.
- *
- * Return: Depends on the condition.
- */
-
-int replaceString(char **old, char *new)
-{
-	free(*old);
-	*old = new;
-	return (1);
 }

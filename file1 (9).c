@@ -126,7 +126,7 @@ int isChain(info_t *info, char *buf, size_t *p)
  * @buf: The character buffer.
  * @p: Address of the current position in @buf.
  * @i: Starting position in @buf.
- * @len: Length of @buf.
+ * @len: len of @buf.
  *
  * Return: Void.
  */

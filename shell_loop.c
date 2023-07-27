@@ -1,7 +1,7 @@
 #include "main.h"
 
 /**
- * shellLoop - Main loop of the shell program.
+ * exection - Main loop of the shell program.
  *
  * @info: Pointer to the info struct.
  * @av: Argument vector.
@@ -9,7 +9,7 @@
  * Return: 0 on success, -1 on failure.
  */
 
-int shellLoop(info_t *info, char **av)
+int exection(info_t *info, char **av)
 {
 	ssize_t r = 0;
 	int builtin_ret = 0;

@@ -143,7 +143,7 @@ int deleteNode(list_t **head, unsigned int index)
 }
 
 /**
- * listLen - Calculates the length of a linked list.
+ * listLen - Calculates the len of a linked list.
  *
  * @h: Pointer to the first node.
  *
