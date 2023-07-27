@@ -35,6 +35,7 @@
 	0, 0, 0 \
 }
 
+#endif
 
 extern char **environ;
 
@@ -185,4 +186,3 @@ int replaceVariables(info_t *);
 int replaceString(char **, char *);
 char **_splitString(char *str, char d);
 
-#endif

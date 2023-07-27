@@ -14,9 +14,7 @@ int main(int ac, char **av)
 	info_t inf[] = {INFO_INIT};
 	int fd;
 
-	fd = 2;
-	asm ("mov %1, %0\n\t"
-		 "add $3, %0" : "=r" (fd) : "r" (fd));
+	fd = dup(2);
 
 	if (ac == 2)
 	{
@@ -33,12 +31,12 @@ int main(int ac, char **av)
 				printChar('\n');
 				printChar(BUF_FLUSH);
 				exit(127);
-			} return (EXIT_FAILURE);
+			} return (1);
 		}
 		inf->readfd = fd;
 	}
 	envList(inf);
 	readHistory(inf);
 	shellLoop(inf, av);
-	return (EXIT_SUCCESS);
+	return (0);
 }
