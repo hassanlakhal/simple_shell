@@ -34,8 +34,8 @@ char **listToStrings(list_t *head)
 
 		str = _strcpy(str, node->str);
 		strs[i] = str;
-		node = node->next
-		i++
+		node = node->next;
+		i++;
 	}
 	strs[i] = NULL;
 	return (strs);
